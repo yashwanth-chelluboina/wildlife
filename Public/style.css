@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f8fb;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 28px;
+  margin: 0;
+  color: #4CAF50;
+}
+
+header p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Animal Image Section */
+.animal-image {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.animal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #388E3C;
+}
+
+/* Chart Section */
+section {
+  margin-top: 40px;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #4CAF50;
+}
+
+canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+/* Banner Image Styling */
+.banner {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner img {
+  width: 100%;
+  height: 300px;
+  object-fit:fill; /* Ensures the image maintains aspect ratio */
+  display: block; /* Removes unwanted spacing below the image */
+  border-radius: 8px;
+}

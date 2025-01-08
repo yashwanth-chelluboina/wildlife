@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wildlife Sighting Submission</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="banner">
+      <img src="https://png.pngtree.com/thumb_back/fh260/background/20220830/pngtree-wildlife-and-forest-conservation-symbolized-by-forest-silhouette-in-the-form-of-a-wild-animal-photo-image_38988970.jpg" 
+      alt="Wildlife Banner">
+    </div>    <header>
+      <h1>🌿 Wildlife Sighting Submission 🌿</h1>
+      <p>Share your wildlife experiences and contribute to conservation efforts.</p>
+    </header>
+    
+    
+    
+    <form id="sighting-form" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <label>Species Name</label>
+        <input type="text" id="species" placeholder="Enter species name" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="location" placeholder="Enter location" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Date and Time</label>
+        <input type="datetime-local" id="datetime" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="description" placeholder="Describe your sighting"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Upload Photos/Videos</label>
+        <input type="file" id="media" accept="image/*, video/*" multiple>
+      </div>
+      
+      <div id="map"></div>
+      
+      <button type="submit">📤 Submit</button>
+    </form>
+    
+    <section>
+      <h2>📊 Wildlife Population Over Time</h2>
+      <canvas id="populationChart"></canvas>
+    </section>
+  </div>
+
+  <script>
+    // Mapbox Initialization
+    mapboxgl.accessToken = 'pk.eyJ1IjoieWFzaHdhbnRoMjUyMiIsImEiOiJjbTVuaHNndWowYWRyMmtzODE2MWo1ODczIn0.YBHuX5JRw-O4qqj-T-lzoQ';
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/outdoors-v12',
+      center: [-74.5, 40],
+      zoom: 9
+    });
+
+    map.on('click', (event) => {
+      const selectedCoords = { lat: event.lngLat.lat, lng: event.lngLat.lng };
+      console.log("Selected Coordinates:", selectedCoords);
+    });
+
+    // Chart.js Configuration
+    const populationData = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Wildlife Population',
+        data: [10, 25, 35, 40, 50, 60],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderWidth: 2
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: populationData,
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    new Chart(document.getElementById('populationChart'), config);
+
+    // Form Submission Handler
+    document.getElementById('sighting-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const species = document.getElementById('species').value;
+      const location = document.getElementById('location').value;
+      const datetime = document.getElementById('datetime').value;
+      const description = document.getElementById('description').value;
+      const media = document.getElementById('media').files;
+      
+      console.log('Form Submitted:', { species, location, datetime, description, media });
+      alert('🦉 Sighting Submitted Successfully!');
+    });
+  </script>
+</body>
+</html>
